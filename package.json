@@ -79,15 +79,13 @@
     "webpack-stream": "^6.1.2"
   },
   "dependencies": {
+    "@fancyapps/fancybox": "^3.5.7",
+    "accordion-js": "^3.3.2",
     "autosize": "^4.0.2",
     "baron": "^3.0.3",
     "choices.js": "^9.0.1",
     "closest": "0.0.1",
-    "svg4everybody": "^2.1.8"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
+    "svg4everybody": "^2.1.8",
+    "swiper": "^8.4.5"
   }
 }
