@@ -1,0 +1,51 @@
+@mixin m-t($margin-top) {
+  .m-t-#{$margin-top} {
+    margin-top: $margin-top + px;
+  }
+}
+
+@mixin m-b($margin-bottom) {
+  .m-b-#{$margin-bottom} {
+    margin-bottom: $margin-bottom + px;
+  }
+}
+
+@mixin m-v($margin-top, $margin-bottom: false) {
+  @if $margin-bottom == false {
+    .m-v-#{$margin-top} {
+      margin-top: $margin-top + px;
+      margin-bottom: $margin-top + px;
+    }
+  } @else {
+    .m-v-#{$margin-top}-#{$margin-bottom} {
+      margin-top: $margin-top + px;
+      margin-bottom: $margin-bottom + px;
+    }
+  }
+}
+
+@mixin p-t($padding-top) {
+  .p-t-#{$padding-top} {
+    padding-top: $padding-top + px;
+  }
+}
+
+@mixin p-b($padding-bottom) {
+  .p-b-#{$padding-bottom} {
+    padding-bottom: $padding-bottom + px;
+  }
+}
+
+@mixin p-v($padding-top, $padding-bottom: false) {
+  @if $padding-bottom == false {
+    .p-v-#{$padding-top} {
+      padding-top: $padding-top + px;
+      padding-bottom: $padding-top + px;
+    }
+  } @else {
+    .p-v-#{$padding-top}-#{$padding-bottom} {
+      padding-top: $padding-top + px;
+      padding-bottom: $padding-bottom + px;
+    }
+  }
+}

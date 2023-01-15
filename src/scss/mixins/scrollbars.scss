@@ -1,0 +1,21 @@
+@mixin scrollbars(
+  $size: 10px,
+  $foreground-color: $color-m-2,
+  $background-color: rgba(#fff, $alpha: 0.25)
+) {
+  // For Chrome & Safari
+  &::-webkit-scrollbar {
+    width: $size;
+    height: $size;
+  }
+  &::-webkit-scrollbar-thumb {
+    background: $foreground-color;
+  }
+  &::-webkit-scrollbar-track {
+    background: $background-color;
+  }
+
+  // Standard version (Firefox only for now)
+  scrollbar-color: $foreground-color $background-color;
+  scrollbar-width: thin;
+}

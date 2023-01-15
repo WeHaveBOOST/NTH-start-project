@@ -7,12 +7,11 @@
 
 // Сделаем viewport великим снова! (привет, IE10) http://timkadlec.com/2012/10/ie10-snap-mode-and-responsive-design/
 @at-root {
-
-  @-ms-viewport { // stylelint-disable-line
+  @-ms-viewport {
+    // stylelint-disable-line
     width: device-width;
   }
 }
-
 
 /* stylelint-disable */
 // @font-face {
@@ -25,6 +24,37 @@
 // }
 /* stylelint-enable */
 
+:root {
+  --container-width: 100%;
+  --container-margin: auto;
+  --container-horizontal-padding: 16px;
+
+  @media (min-width: $screen-xxl) {
+    --container-width: calc(1800px - var(--container-horizontal-padding) * 2);
+  }
+
+  @media (min-width: $screen-xl) {
+    --container-width: calc(1200px - var(--container-horizontal-padding) * 2);
+  }
+
+  @media (min-width: $screen-lg) {
+    --container-width: calc(992px - var(--container-horizontal-padding) * 2);
+  }
+
+  @media (min-width: $screen-md) {
+    --container-width: calc(768px - var(--container-horizontal-padding) * 2);
+  }
+
+  @media (min-width: $screen-sm) {
+    --container-width: calc(480px - var(--container-horizontal-padding) * 2);
+  }
+}
+
+.container {
+  margin: var(--container-margin);
+  padding: 0 var(--container-horizontal-padding);
+  width: var(--container-width);
+}
 
 .page {
   box-sizing: border-box;
@@ -59,8 +89,8 @@
 }
 
 body {
-  display: flex;           // Исправляем баг в IE для min-height and flexbox (flex-direction:column)
-  flex-direction: column;  // и прижимаем footer в IE 10-11
+  display: flex; // Исправляем баг в IE для min-height and flexbox (flex-direction:column)
+  flex-direction: column; // и прижимаем footer в IE 10-11
   min-height: 100%;
   margin: 0;
   word-break: break-word;
@@ -75,17 +105,17 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-[tabindex='-1']:focus {
+[tabindex="-1"]:focus {
   outline: none !important; // stylelint-disable-line
 }
 
 // Коррекция для кликабельных элементов с указанной ролью в iOS
-[role='button'] {
+[role="button"] {
   cursor: pointer;
 }
 
 // Мы любим Сафари (на самом деле, нет).
-[type='search']::-webkit-search-decoration {
+[type="search"]::-webkit-search-decoration {
   -webkit-appearance: none; // stylelint-disable-line
 }
 
@@ -93,53 +123,57 @@ body {
 // summary,
 a,
 button,
-[role='button'],
+[role="button"],
 input,
 label,
 select,
 textarea {
   touch-action: manipulation; // Стилевая коррекция 300ms задержки (для поддерживающих браузеров)
-  margin: 0;                  // Убираем margin в Firefox и Safari
+  margin: 0; // Убираем margin в Firefox и Safari
 }
 
 button,
 input {
-  overflow: visible;    // Покажем торчащее в Edge
+  overflow: visible; // Покажем торчащее в Edge
   text-transform: none; // Уберём наследование text transform в Firefox
 }
 
 // Коррекция проблем стилизации для Safari
 button,
-html [type='button'],
-[type='reset'],
-[type='submit'] {
+html [type="button"],
+[type="reset"],
+[type="submit"] {
   -webkit-appearance: button; // stylelint-disable-line
 }
 
 button::-moz-focus-inner,
-[type='button']::-moz-focus-inner,
-[type='reset']::-moz-focus-inner,
-[type='submit']::-moz-focus-inner {
+[type="button"]::-moz-focus-inner,
+[type="reset"]::-moz-focus-inner,
+[type="submit"]::-moz-focus-inner {
   padding: 0;
   border-style: none;
 }
 
+button {
+  padding: 0;
+  border: 0;
+  background-color: transparent;
+}
+
 // Коррекция для Mobile Safari (https://github.com/twbs/bootstrap/issues/11266)
-input[type='date'],
-input[type='time'],
-input[type='datetime-local'],
-input[type='month'] {
+input[type="date"],
+input[type="time"],
+input[type="datetime-local"],
+input[type="month"] {
   -webkit-appearance: listbox; // stylelint-disable-line
 }
 
 textarea {
-  overflow: auto;   // Удаление верт. скролла в IE.
+  overflow: auto; // Удаление верт. скролла в IE.
   resize: vertical; // Правильное изменение размеров
 }
 
 svg {
-  fill: currentColor;
-
   a &,
   button & {
     pointer-events: none; // Мы любим Edge, это браузер! (почти)
@@ -156,39 +190,29 @@ img {
 }
 
 a {
-  color: $link-color;
+  color: $text-color;
   background-color: transparent;
+  text-decoration: none;
   transition: color 0.3s;
 
   &:hover,
   &:focus {
-    color: $link-color--hover;
+    color: $text-color;
   }
 
   // &:visited {
   //   color: $link-color--hover;
   // }
-
-  &[href^='tel:'] {
-
-    // На больших экранах телефоны-ссылки делаем обычным текстом
-    @media (min-width: $screen-xl) {
-      white-space: nowrap;
-      pointer-events: none;
-      text-decoration: inherit;
-      color: inherit;
-    }
-  }
 }
 
 hr {
   box-sizing: content-box; // Проблема Firefox
-  height: 0;               // Проблема Firefox
+  height: 0; // Проблема Firefox
   margin-top: $typo-margin-vertical * 2;
   margin-bottom: $typo-margin-vertical * 2;
   border: 0;
   border-top: 1px solid $border-color;
-  overflow: visible;       // Проблема Edge и IE
+  overflow: visible; // Проблема Edge и IE
 }
 
 h1,
@@ -197,20 +221,32 @@ h3,
 h4,
 h5,
 h6 {
-  margin-top: 1em;
-  margin-bottom: 0.5em;
+  margin-top: 0;
+  margin-bottom: 0;
   font-family: $font-family;
   font-weight: 700;
   line-height: 1.2;
   color: currentColor;
 }
 
-h1 { font-size: $font-size-h1; } // stylelint-disable-line
-h2 { font-size: $font-size-h2; } // stylelint-disable-line
-h3 { font-size: $font-size-h3; } // stylelint-disable-line
-h4 { font-size: $font-size-h4; } // stylelint-disable-line
-h5 { font-size: $font-size-h5; } // stylelint-disable-line
-h6 { font-size: $font-size-h6; } // stylelint-disable-line
+h1 {
+  font-size: $font-size-h1;
+} // stylelint-disable-line
+h2 {
+  font-size: $font-size-h2;
+} // stylelint-disable-line
+h3 {
+  font-size: $font-size-h3;
+} // stylelint-disable-line
+h4 {
+  font-size: $font-size-h4;
+} // stylelint-disable-line
+h5 {
+  font-size: $font-size-h5;
+} // stylelint-disable-line
+h6 {
+  font-size: $font-size-h6;
+} // stylelint-disable-line
 
 p,
 ul,
@@ -222,7 +258,7 @@ pre,
 address,
 figure {
   margin-top: 0;
-  margin-bottom: $typo-margin-vertical;
+  margin-bottom: 0;
 }
 
 p {
@@ -240,8 +276,9 @@ address {
 
 ul,
 ol {
-  margin-bottom: $typo-margin-vertical;
-  padding-left: 1.5em;
+  margin-bottom: 0;
+  padding-left: 0;
+  list-style: none;
 
   ul,
   ol {
@@ -339,3 +376,196 @@ pre {
   }
 }
 
+// @include m-t(50);
+
+// @include m-b(25);
+
+// @include m-v(50);
+// @include m-v(50, 100);
+
+// @include p-t(50);
+
+// @include p-b(25);
+
+// @include p-v(50);
+// @include p-v(50, 100);
+
+// @include scrollbars(10px, rgba($color-m-1, 0.5));
+
+.text-flow {
+  padding: 100px 500px;
+
+  > * {
+    margin-top: 1em;
+    margin-bottom: 1em;
+  }
+
+  > :first-child {
+    margin-top: 0;
+  }
+
+  > :last-child {
+    margin-bottom: 0;
+  }
+
+  > br {
+    display: none;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    margin-bottom: 0.5em !important;
+
+    & + * {
+      margin-top: 0 !important;
+    }
+  }
+
+  b {
+    font-weight: 700;
+  }
+
+  ul,
+  ol {
+    li {
+      position: relative;
+      padding-left: 20px;
+
+      > * {
+        margin-top: 1em;
+        margin-bottom: 1em;
+      }
+
+      > :first-child {
+        margin-top: 0;
+      }
+
+      > :last-child {
+        margin-bottom: 0;
+      }
+    }
+
+    li + li {
+      margin-top: 0.75em;
+    }
+  }
+
+  ul {
+    li {
+      &:before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 8px;
+        width: 8px;
+        height: 8px;
+        background-color: $color-main;
+      }
+    }
+  }
+
+  ol {
+    counter-reset: ol-number 0;
+
+    li {
+      &::before {
+        counter-increment: ol-number;
+        content: counter(ol-number) ".";
+        position: absolute;
+        left: 0;
+        top: 0;
+      }
+    }
+  }
+
+  table {
+    border-collapse: collapse;
+
+    th,
+    td {
+      padding: 0.5em;
+      border: 1px solid #000;
+    }
+
+    th {
+    }
+
+    td {
+    }
+
+    &.zebra-even {
+      tr:nth-child(even) {
+        background-color: rgba(#000, 0.1);
+      }
+    }
+
+    &.zebra-odd {
+      tr:nth-child(odd) {
+        background-color: rgba(#000, 0.1);
+      }
+    }
+
+    &.w-100 {
+      width: 100%;
+    }
+
+    &.t-center {
+      text-align: center;
+    }
+
+    &.t-center-header {
+      th {
+        text-align: center;
+      }
+    }
+
+    &.t-v-center {
+      vertical-align: middle;
+    }
+  }
+
+  img {
+    display: block;
+
+    &.a-l,
+    &.a-r {
+      margin-top: 0;
+      margin-bottom: 1em;
+    }
+
+    &.a-l {
+      float: left;
+      margin-right: 1em;
+    }
+
+    &.a-r {
+      float: right;
+      margin-left: 1em;
+    }
+
+    &.a-c {
+      display: block;
+      margin: 2em auto;
+      max-width: 50%;
+      min-width: 280px;
+    }
+  }
+
+  a {
+    color: $link-color;
+    text-decoration: underline;
+
+    &:hover,
+    &:focus {
+      color: $link-color--hover;
+    }
+
+    // &:visited {
+    //   color: $link-color--hover;
+    // }
+  }
+}
