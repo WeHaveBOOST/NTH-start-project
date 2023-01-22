@@ -2,10 +2,10 @@
 
 import ready from 'Utils/documentReady.js';
 import getScrollSize from 'Utils/getScrollSize.js';
-// import Swiper, { Navigation, Pagination, Autoplay, Grid  } from 'swiper';
+import Swiper, { Navigation, Pagination, Autoplay  } from 'swiper';
 // import { Fancybox } from "@fancyapps/ui";
 
-// Swiper.use([Navigation, Pagination, Autoplay, Grid]);
+Swiper.use([Navigation, Pagination, Autoplay]);
 
 ready(function() {
   // Добавление кастомного свойства с системной шириной скролла
@@ -55,6 +55,28 @@ ready(function() {
   //     },
   //   },
   // });
+
+
+  new Swiper(".test-slider", {
+    slidesPerView: 1,
+    spaceBetween: 20,
+    speed: 1000,
+    navigation: {
+      prevEl: ".test-slider .swiper-button-prev",
+      nextEl: ".test-slider .swiper-button-next",
+    },
+    pagination: {
+      el: ".test-slider .swiper-pagination",
+    },
+    on: {
+      init: function (swiper) {
+
+      },
+      slideChange: function (swiper) {
+
+      },
+    },
+  });
 
 });
 

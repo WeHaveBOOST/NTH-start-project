@@ -569,3 +569,117 @@ pre {
     // }
   }
 }
+
+/* ----- .swiper ----- */
+
+.swiper {
+  $block-name: &;
+
+  // &.swiper-fade {
+  //   .swiper-slide {
+  //     opacity: 0 !important;
+  //   }
+
+  //   .swiper-slide.swiper-slide-active {
+  //     opacity: 1 !important;
+  //   }
+
+  //   &.fade {
+  //     .swiper-slide {
+  //       transition: opacity 1s;
+  //     }
+  //   }
+  // }
+
+  .swiper__nav {
+  }
+
+  &.def-arrows {
+    .swiper-button-prev,
+    .swiper-button-next {
+      // position: absolute;
+      // left: 0;
+      // bottom: 0;
+      width: 50px;
+      height: 50px;
+      background-color: #333;
+      cursor: pointer;
+      transition: background-color $transition-time, opacity $transition-time;
+
+      &:not(.swiper-button-disabled):hover,
+      &:not(.swiper-button-disabled):focus {
+        background-color: tomato;
+
+        // svg {
+        //   path {
+        //   }
+        // }
+      }
+
+      &.swiper-button-disabled {
+        cursor: default;
+        opacity: 0.5;
+      }
+
+      // svg {
+      //   path {
+      //   }
+      // }
+    }
+
+    .swiper-button-prev {
+    }
+
+    .swiper-button-next {
+    }
+  }
+
+  // .lr-arrows {
+  //   position: relative;
+
+  //   .swiper-button-prev,
+  //   .swiper-button-next {
+  //     position: absolute;
+  //     z-index: 1;
+  //     top: 50%;
+  //     transform: translateY(-50%);
+  //   }
+
+  //   .swiper-button-prev {
+  //     left: 25px;
+  //   }
+
+  //   .swiper-button-next {
+  //     right: 25px;
+  //   }
+  // }
+
+  &.def-pagination {
+    .swiper-pagination {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      // position: absolute;
+      // left: 0;
+      // bottom: 0;
+    }
+
+    .swiper-pagination-bullet {
+      width: 15px;
+      height: 15px;
+      border-radius: 50%;
+      background-color: #333;
+      transition: background-color $transition-time;
+
+      // &:not(.swiper-pagination-bullet-active):hover,
+      // &:not(.swiper-pagination-bullet-active):focus {
+      //   cursor: pointer;
+      //   background-color: rgba(tomato, 0.65);
+      // }
+
+      &.swiper-pagination-bullet-active {
+        background-color: tomato;
+      }
+    }
+  }
+}

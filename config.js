@@ -17,7 +17,6 @@ let config = {
     'src/scss/mixins.scss',
     '../../node_modules/swiper/swiper.scss',
     // '../../node_modules/swiper/modules/autoplay/autoplay.scss',
-    // '../../node_modules/swiper/modules/grid/grid.scss',
     // '../../node_modules/@fancyapps/ui/src/Fancybox/Fancybox.scss',
 
     // 'somePackage/dist/somePackage.css', // для 'node_modules/somePackage/dist/somePackage.css',
