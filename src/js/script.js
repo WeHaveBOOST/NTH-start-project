@@ -1,5 +1,3 @@
-// /* global document console */
-
 import ready from 'Utils/documentReady.js';
 import getScrollSize from 'Utils/getScrollSize.js';
 import Swiper, { Navigation, Pagination, Autoplay  } from 'swiper';
@@ -7,11 +5,9 @@ import Swiper, { Navigation, Pagination, Autoplay  } from 'swiper';
 
 Swiper.use([Navigation, Pagination, Autoplay]);
 
-ready(function() {
+ready (function() {
   // Добавление кастомного свойства с системной шириной скролла
   document.documentElement.style.setProperty('--css-scroll-size', `${getScrollSize()}px`);
-
-  const body = document.querySelector('body');
 
   // new Swiper("cssSelector", {
   //   slidesPerView: 1,
@@ -56,27 +52,78 @@ ready(function() {
   //   },
   // });
 
+  // function Fixed (
+  //   target,
+  //   fixationPoint = 0,
+  //   fixationClass = 'active',
+  //   position = 'top',
+  //   hideOnKeepScrollingBottom = false,
+  //   relatedElements = []
+  // ) {
+  //   const isTargetHTMLElement = isHTMLElement(target);
+  //   if (isTargetHTMLElement === false &&
+  //     typeof target !== 'string') {
+  //     return console.error('Fixed(): Invalid type of first argument, expected HTMLElement | String');
+  //   }
 
-  new Swiper(".test-slider", {
-    slidesPerView: 1,
-    spaceBetween: 20,
-    speed: 1000,
-    navigation: {
-      prevEl: ".test-slider .swiper-button-prev",
-      nextEl: ".test-slider .swiper-button-next",
-    },
-    pagination: {
-      el: ".test-slider .swiper-pagination",
-    },
-    on: {
-      init: function (swiper) {
+  //   const isFixationPointHTMLElement = isHTMLElement(fixationPoint);
+  //   if (isFixationPointHTMLElement === false &&
+  //     typeof fixationPoint !== 'string' &&
+  //     typeof fixationPoint !== 'number') {
+  //     return console.error('Fixed(): Invalid type of second argument, expected HTMLElement | String | Number');
+  //   }
 
-      },
-      slideChange: function (swiper) {
+  //   const targetElement = isTargetHTMLElement ? target : document.querySelector(target);
+  //   const fixationPointElement = isFixationPointHTMLElement || typeof fixationPoint === 'number' ? fixationPoint : document.querySelector(fixationPoint);
 
-      },
-    },
-  });
+  //   let resultfixationPoint = undefined;
+  //   window.addEventListener('scroll', () => {
+  //     const scrollY = window.scrollY || window.pageYOffset;
+
+  //     if (typeof fixationPoint !== 'number') {
+  //       resultfixationPoint = position === 'bottom' ? fixationPointElement.offsetTop + fixationPointElement.offsetHeight : fixationPointElement.offsetTop;
+  //     } else {
+  //       resultfixationPoint = fixationPointElement;
+  //     }
+
+  //     if (scrollY > resultfixationPoint) {
+  //       targetElement.classList.add(fixationClass);
+  //     } else {
+  //       targetElement.classList.remove(fixationClass);
+  //     }
+  //   });
+
+  //   function isHTMLElement(element) {
+  //     return element instanceof HTMLElement;
+  //   }
+  // }
+
+  const dialog = document.querySelector('#testDialog');
+  if (dialog) {
+    const closeDialog = dialog.querySelector('button');
+    const triggerOne = document.querySelector('#testDialogShow');
+    const triggerTwo = document.querySelector('#testDialogShowModal');
+
+    dialog.addEventListener('cancel', () => {
+      console.log('dialog cancel');
+    });
+
+    dialog.addEventListener('close', () => {
+      console.log('dialog close');
+    });
+
+    triggerOne.addEventListener('click', () => {
+      dialog.show();
+    });
+
+    triggerTwo.addEventListener('click', () => {
+      dialog.showModal();
+    });
+
+    closeDialog.addEventListener('click', () => {
+      dialog.close();
+    });
+  }
 
 });
 

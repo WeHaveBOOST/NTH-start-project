@@ -3,6 +3,20 @@
 // Очередность: http://nicothin.github.io/idiomatic-pre-CSS/#priority
 
 .page-header {
+  $block-name: &;
 
-  $block-name:                &; // #{$block-name}__element
+  &__first {
+    height: 100vh;
+    background-color: rgb(71, 255, 194);
+  }
+
+  &__second {
+    height: 100vh;
+    background-color: tomato;
+  }
+
+  &__third {
+    height: 100vh;
+    background-color: #cacaca;
+  }
 }

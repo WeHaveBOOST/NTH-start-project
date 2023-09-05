@@ -3,8 +3,7 @@
 // Очередность: http://nicothin.github.io/idiomatic-pre-CSS/#priority
 
 .field-text {
-
-  $block-name:                &; // #{$block-name}__element
+  $block-name: &;
 
   display: block;
   margin-bottom: $typo-margin-vertical;
@@ -31,12 +30,10 @@
 
   &__help-text {
     @include field-help-text;
+    display: none;
   }
 
-
-
   &--error {
-
     #{$block-name}__name,
     #{$block-name}__input,
     #{$block-name}__help-text {
@@ -46,6 +43,10 @@
     #{$block-name}__input {
       border-color: $color-danger;
       background-color: lighten($color-danger, 35%);
+    }
+
+    #{$block-name}__help-text {
+      display: block;
     }
   }
 }

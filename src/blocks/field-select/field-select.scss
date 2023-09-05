@@ -3,8 +3,7 @@
 // Очередность: http://nicothin.github.io/idiomatic-pre-CSS/#priority
 
 .field-select {
-
-  $block-name:                &; // #{$block-name}__element
+  $block-name: &;
 
   display: block;
   margin-bottom: $typo-margin-vertical;
@@ -13,7 +12,8 @@
     @include field-name;
   }
 
-  &__select-wrap {}
+  &__select-wrap {
+  }
 
   // Оформление штатного селекта
   // &__select {
@@ -53,9 +53,8 @@
 
   &__help-text {
     @include field-help-text;
+    display: none;
   }
-
-
 
   &--error {
     color: $color-danger;
@@ -72,15 +71,16 @@
       border-color: $color-danger;
       background-color: lighten($color-danger, 35%);
     }
+
+    #{$block-name}__help-text {
+      display: block;
+    }
   }
 }
 
-
-
 /** @define choices */
 .choices {
-
-  $block-name:                &; // #{$block-name}__element
+  $block-name: &; // #{$block-name}__element
 
   position: relative;
 
@@ -88,7 +88,6 @@
     outline: 0;
 
     &:not(.is-disabled) {
-
       #{$block-name}__inner {
         @include field-focus;
       }
@@ -96,7 +95,7 @@
   }
 
   &:after {
-    content: '';
+    content: "";
     position: absolute;
     top: 7px;
     right: 16px;
@@ -120,7 +119,8 @@
   &__inner {
     border: 1px solid $border-color;
     border-radius: $border-radius;
-    padding: $field-padding-vertical 40px $field-padding-vertical $field-padding-horizontal;
+    padding: $field-padding-vertical 40px $field-padding-vertical
+      $field-padding-horizontal;
     background: #fff;
     font-size: 1em;
     line-height: 1.5;
@@ -167,14 +167,12 @@
   }
 
   &.is-open {
-
     #{$block-name}__list--dropdown {
       display: block;
     }
   }
 
   &.is-disabled {
-
     #{$block-name}__inner {
       background-color: $gray-lighter;
       cursor: default;

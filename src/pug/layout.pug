@@ -49,5 +49,29 @@ html(class='page  no-js', lang='ru')
       .page__footer-wrapper
         +page-footer()
 
+    .fixed-header
+      .fixed-header__inner.container
+        a.logo(href="#") LOGOTYPE
+
+        nav.menu
+          ul.menu__list
+            li.menu__list-item
+              a.menu__list-item-link(href='javascript:void(0)') link
+            li.menu__list-item
+              a.menu__list-item-link(href='javascript:void(0)') link
+            li.menu__list-item
+              a.menu__list-item-link(href='javascript:void(0)') link
+            li.menu__list-item
+              a.menu__list-item-link(href='javascript:void(0)') link
+            li.menu__list-item
+              a.menu__list-item-link(href='javascript:void(0)') link
+            li.menu__list-item
+              a.menu__list-item-link(href='javascript:void(0)') link
+
+        .right-block
+          +btn('log in')
+          +btn('log out')
+
+
     block page-bottom
       script(src='js/bundle.js')

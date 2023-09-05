@@ -9,191 +9,75 @@ block meta
 
 block content
 
-  section.test-slider.swiper.def-arrows.def-pagination
-    .swiper-wrapper
-      .swiper-slide slide 1
-      .swiper-slide slide 2
-      .swiper-slide slide 3
+  style.
+    form {
+      margin: 150px auto;
+      width: 500px;
+    }
 
-    .swiper-pagination
+  //  form(
+      action="test-form.php",
+      method="post",
+      data-check-form,
+      data-ajax,
+      data-ok-msg="Форма успешно отправлена",
+      data-error-msg="При отправке формы возникла ошибка, попробуйте перезагрузить страницу и отправить форму ещё раз"
+    )
+      +field-text({
+        title: 'Имя',
+        helpText: 'Подсказка',
+        attrs: {
+          name: 'name',
+          'data-check-pattern': '^[а-яА-Яa-zA-Z]{3,25}$',
+        }
+      })
+      +field-text({
+        title: 'Телефон',
+        helpText: 'Подсказка',
+        attrs: {
+          name: 'tel',
+          'data-check-pattern': "^((8|\\+7|\\+3)[\\- ]?)?(\\(?\\d{3}\\)?[\\- ]?)?[\\d\\- ]{7,15}$",
+        }
+      })
+      +field-text({
+        title: 'Комментарий',
+        isTextarea: true,
+        helpText: 'Подсказка',
+        attrs: {
+          name: 'comment',
+          'data-check-pattern': '^[а-яА-Яa-zA-Z ]+$',
+        }
+      })
+      +field-checkbox([
+        {
+          title: 'Чекбокс0',
+          helpText: 'Подсказка',
+          attrs: {
+            name: 'check0',
+            'data-check-state': 'on',
+          }
+        },
+      ])
+      +btn('Отправить')
 
-    .swiper-button-prev
-    .swiper-button-next
+  //+pagination()
+    +pagination-item('1', '/1')
+    +pagination-item('...')
+    +pagination-item('4', '/4')
+    +pagination-item('5', '/5', true)
+    +pagination-item('6', '/6')
+    +pagination-item('...')
+    +pagination-item('999', '/999')
 
-  section.text-flow
-    h2 title h2
-    p Lorem ipsum dolor, sit amet consectetur adipisicing elit. Delectus illum, aut repudiandae, illo impedit reprehenderit modi nobis accusantium voluptatum cum reiciendis repellendus fuga, quisquam fugit nulla accusamus nostrum doloremque eligendi.
+  .btns-group.j-c-center
+    +btn('Just open')#testDialogShow(type="button")
+    +btn('Open like modal')#testDialogShowModal(type="button")
 
-    h3 title h3
-    p Lorem ipsum dolor, sit amet consectetur adipisicing elit. Delectus illum, aut repudiandae, illo impedit reprehenderit modi nobis accusantium voluptatum cum reiciendis repellendus fuga, quisquam fugit nulla accusamus nostrum doloremque eligendi.
-
-    h2 title h2
-    p Lorem ipsum dolor, sit amet consectetur adipisicing elit. Delectus illum, aut repudiandae, illo impedit reprehenderit modi nobis accusantium voluptatum cum reiciendis repellendus fuga, quisquam fugit nulla accusamus nostrum doloremque eligendi.
-    ul
-      li Lorem ipsum dolor, sit amet consectetur adipisicing elit
-      li Lorem ipsum dolor, sit amet consectetur adipisicing elit
-      li Lorem ipsum dolor, sit amet consectetur adipisicing elit
-      li Lorem ipsum dolor, sit amet consectetur adipisicing elit
-      li Lorem ipsum dolor, sit amet consectetur adipisicing elit
-
-    p Lorem ipsum dolor, sit amet consectetur adipisicing elit. Delectus illum, aut repudiandae, illo impedit reprehenderit modi nobis accusantium voluptatum cum reiciendis repellendus fuga, quisquam fugit nulla accusamus nostrum doloremque eligendi.
-
-    h6 title h6
-    ol
-      li Lorem ipsum dolor, sit amet consectetur adipisicing elit
-      li Lorem ipsum dolor, sit amet consectetur adipisicing elit
-      li
-        ol
-          li Lorem ipsum dolor
-          li Lorem ipsum dolor
-          li Lorem ipsum dolor
-      li Lorem ipsum dolor, sit amet consectetur adipisicing elit
-      li Lorem ipsum dolor, sit amet consectetur adipisicing elit
-    p Lorem ipsum dolor, sit amet consectetur adipisicing elit. Delectus illum, aut repudiandae, illo impedit reprehenderit modi nobis accusantium voluptatum cum reiciendis repellendus fuga, quisquam fugit nulla accusamus nostrum doloremque eligendi.
-
-    h3 title h3
-    p Lorem ipsum dolor, sit amet consectetur adipisicing elit. Delectus illum, aut repudiandae, illo impedit reprehenderit modi nobis accusantium voluptatum cum reiciendis repellendus fuga, quisquam fugit nulla accusamus nostrum doloremque eligendi.
-    p Lorem ipsum dolor, sit amet consectetur adipisicing elit. Delectus illum, aut repudiandae, illo impedit reprehenderit modi nobis accusantium voluptatum cum reiciendis repellendus fuga, quisquam fugit nulla accusamus nostrum doloremque eligendi.
-
-    h4 title h4
-    p Lorem ipsum dolor, sit amet consectetur adipisicing elit. Delectus illum, aut repudiandae, illo impedit reprehenderit modi nobis accusantium voluptatum cum reiciendis repellendus fuga, quisquam fugit nulla accusamus nostrum doloremque eligendi.
-    p Lorem ipsum dolor, sit amet consectetur adipisicing elit. Delectus illum, aut repudiandae, illo impedit reprehenderit modi nobis accusantium voluptatum cum reiciendis repellendus fuga, quisquam fugit nulla accusamus nostrum doloremque eligendi.
-
-    h2 Lorem ipsum dolor sit amet consectetur adipisicing elit
-    table.zebra-even
-      tr
-        th title head
-        th title head
-        th title head
-        th title head
-        th title head
-      tr
-        td text
-        td text
-        td text
-        td text
-        td text
-      tr
-        td text
-        td text
-        td text
-        td text
-        td text
-      tr
-        td text
-        td text
-        td text
-        td text
-        td text
-      tr
-        td text
-        td text
-        td text
-        td text
-        td text
-
-    p #[b Lorem ipsum dolor sit amet consectetur adipisicing elit]
-    table.zebra-odd.t-center
-      tr
-        th title head
-        th title head
-        th title head
-        th title head
-        th title head
-      tr
-        td text
-        td text
-        td text
-        td text
-        td text
-      tr
-        td text
-        td text
-        td text
-        td text
-        td text
-      tr
-        td text
-        td text
-        td text
-        td text
-        td text
-      tr
-        td text
-        td text
-        td text
-        td text
-        td text
-
-    p Lorem ipsum dolor, sit amet consectetur #[a(href='javascript:void(0)') link adipisicing] elit. Delectus illum, aut repudiandae, illo impedit reprehenderit modi nobis accusantium voluptatum cum reiciendis repellendus fuga, quisquam fugit nulla accusamus nostrum doloremque eligendi.
-
-    ul
-      li
-        h2 title h2
-        p Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem repellat, odit architecto explicabo sit vero libero, tempore dolor modi temporibus officia nobis minus accusantium, repellendus dignissimos ipsa! Modi, autem provident?
-
-        h3 title h3
-        p Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem repellat, odit architecto explicabo sit vero libero, tempore dolor modi temporibus officia nobis minus accusantium, repellendus dignissimos ipsa! Modi, autem provident?
-
-        h4 title h4
-        p Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem repellat, odit architecto explicabo sit vero libero, tempore dolor modi temporibus officia nobis minus accusantium, repellendus dignissimos ipsa! Modi, autem provident?
-        table.w-100.t-center-header
-          tr
-            th title head
-            th title head
-            th title head
-            th title head
-            th title head
-          tr
-            td text
-            td text
-            td text
-            td text
-            td text
-          tr
-            td text
-            td text
-            td text
-            td text
-            td text
-          tr
-            td text
-            td text
-            td text
-            td text
-            td text
-          tr
-            td text
-            td text
-            td text
-            td text
-            td text
-        ul
-          li Lorem ipsum dolor
-          li Lorem ipsum dolor
-          li Lorem ipsum dolor
-        p Lorem ipsum dolor sit amet consectetur adipisicing elit. Et, consequuntur voluptas excepturi magni ducimus corrupti natus? Hic, atque quas voluptates incidunt minima ullam odio natus. Adipisci exercitationem beatae soluta amet!
-
-      li Lorem ipsum dolor, sit amet consectetur adipisicing elit
-      li Lorem ipsum dolor, sit amet consectetur adipisicing elit
-      li
-        h6 Lorem ipsum dolor sit amet consectetur adipisicing
-        ul
-          li Lorem ipsum dolor
-          li Lorem ipsum dolor
-          li Lorem ipsum dolor
-        p Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi velit neque eos at accusantium vero quaerat delectus aliquid, consequatur doloribus accusamus voluptatum nulla odit nisi nostrum veniam quia repudiandae assumenda.
-      li Lorem ipsum dolor, sit amet consectetur adipisicing elit
-
-    p Lorem ipsum dolor, sit amet consectetur adipisicing elit. Delectus illum, aut repudiandae, illo impedit reprehenderit modi nobis accusantium voluptatum cum reiciendis repellendus fuga, quisquam fugit nulla accusamus nostrum doloremque eligendi.
-    p Lorem ipsum dolor, sit amet consectetur adipisicing elit. Delectus illum, aut repudiandae, illo impedit reprehenderit modi nobis accusantium voluptatum cum reiciendis repellendus fuga, quisquam fugit nulla accusamus nostrum doloremque eligendi.
-    p Lorem ipsum dolor, sit amet consectetur adipisicing elit. Delectus illum, aut repudiandae, illo impedit reprehenderit modi nobis accusantium voluptatum cum reiciendis repellendus fuga, quisquam fugit nulla accusamus nostrum doloremque eligendi.
-
-    img.a-c(src="https://img.freepik.com/free-photo/mesmerizing-scenery-green-mountains-with-cloudy-sky-surface_181624-27189.jpg?w=1800&t=st=1673811996~exp=1673812596~hmac=ed04bb9a2adde30b8a6ccf2a174acf9e316051487d9f67646a5b6a593de0d263", alt="")
-
-    p #[b Lorem] ipsum dolor, sit amet consectetur adipisicing elit. Delectus illum, aut repudiandae, illo impedit reprehenderit modi nobis accusantium voluptatum cum reiciendis repellendus fuga, quisquam fugit nulla accusamus nostrum doloremque eligendi.
-    p Lorem ipsum dolor, sit amet consectetur adipisicing elit. Delectus illum, aut repudiandae, illo impedit reprehenderit modi nobis accusantium voluptatum cum reiciendis repellendus fuga, quisquam fugit nulla accusamus nostrum doloremque eligendi.
-
+  dialog#testDialog
+    .dialog__inner.text-flow
+      h2 This is title
+      p Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum, tempora ea cumque eum culpa exercitationem? Fugit soluta quia corporis nihil, assumenda reiciendis aliquam quidem dolorum harum, adipisci dolorem accusamus voluptates!
+      +btn('close dialog')
 
 //- block footer
 //-   p footer

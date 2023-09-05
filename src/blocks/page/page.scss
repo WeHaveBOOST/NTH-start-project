@@ -393,8 +393,6 @@ pre {
 // @include scrollbars(10px, rgba($color-m-1, 0.5));
 
 .text-flow {
-  padding: 100px 500px;
-
   > * {
     margin-top: 1em;
     margin-bottom: 1em;
@@ -681,5 +679,143 @@ pre {
         background-color: tomato;
       }
     }
+  }
+}
+
+/* ----- .fixed-header ----- */
+
+.fixed-header {
+  $block-name: &;
+
+  --duration: 0.5s;
+
+  position: fixed;
+  left: 0;
+  top: 0;
+  padding: 15px 0;
+  width: 100%;
+  box-shadow: 0 0 6px 0 rgba(0, 0, 0, 0.5);
+  background-color: #fff;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity var(--duration), visibility var(--duration);
+
+  &__inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &.active {
+    opacity: 1;
+    visibility: visible;
+  }
+}
+
+/* ----- .menu ----- */
+
+.menu {
+  $block-name: &;
+
+  margin: 0 150px;
+
+  &__list {
+    display: flex;
+    gap: 15px;
+  }
+
+  &__list-item {
+  }
+
+  &__list-item-link {
+  }
+}
+
+.right-block {
+  display: flex;
+  gap: 15px;
+  margin-left: auto;
+}
+
+.scroll-off {
+  overflow: hidden;
+}
+
+.response-wrapper,
+.response-block {
+  position: fixed;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity $transition-time, visibility $transition-time;
+
+  &.active {
+    opacity: 1;
+    visibility: visible;
+  }
+}
+
+.response-wrapper {
+  z-index: 10;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+}
+
+.response-block {
+  z-index: 11;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  padding: 15px;
+  border-right: 5px solid transparent;
+  width: 450px;
+  max-width: calc(100% - 30px);
+  background-color: #fff;
+  font: 16px/160% var(--ff);
+  color: #333;
+
+  &.error {
+    border-color: red;
+  }
+
+  &.ok {
+    border-color: limegreen;
+  }
+}
+
+.d-f {
+  display: flex;
+}
+
+.j-c-center {
+  justify-content: center;
+}
+
+.btns-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 15px;
+}
+
+dialog {
+  display: block;
+  position: fixed;
+  inset-block-start: 0;
+  inset-block-end: 0;
+  max-width: fit-content;
+  max-height: fit-content;
+  opacity: 0;
+  visibility: hidden;
+
+  &::backdrop {
+    background-color: rgba(#000, 0.5);
+  }
+
+  &[open] {
+    opacity: 1;
+    visibility: visible;
+    transition: 0.5s;
   }
 }

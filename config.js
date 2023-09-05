@@ -8,7 +8,7 @@ let config = {
     'no-js',
   ],
   'alwaysAddBlocks': [
-    // 'form-validation'
+    'form-validation'
     // 'sprite-svg',
     // 'sprite-png',
   ],
